@@ -2,6 +2,7 @@
   "name": "user-experience-notes-site",
   "description": "User Experience Notes website",
   "author": "Thomas Maitret <thomas.maitret@laposte.net>",
+  "version": "1.0",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
