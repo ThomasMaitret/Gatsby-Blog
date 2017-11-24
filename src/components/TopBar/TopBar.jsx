@@ -38,7 +38,7 @@ const Wrapper = styled.header`
 `;
 
 const Logo = styled.span`
-  width: 240px;
+  width: auto;
   display: block;
   font-size: 1em;
   font-weight: 700;
