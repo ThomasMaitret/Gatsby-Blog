@@ -11,12 +11,10 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       graphql(
         `
           {
-            allMarkdownRemark(limit: 1000) {
+            allContentfulPost(limit: 1000) {
               edges {
                 node {
-                  frontmatter {
-                    path
-                  }
+                  slug
                 }
               }
             }
@@ -29,12 +27,12 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         }
 
         // Create blog posts pages.
-        _.each(result.data.allMarkdownRemark.edges, edge => {
+        _.each(result.data.allContentfulPost.edges, edge => {
           createPage({
-            path: edge.node.frontmatter.path,
+            path: edge.node.slug,
             component: blogPost,
             context: {
-              path: edge.node.frontmatter.path
+              path: edge.node.slug
             }
           });
         });

@@ -5,7 +5,6 @@ import styled, { keyframes } from "styled-components";
 import Article from "../components/Article/Article";
 import Helmet from "react-helmet";
 import React from "react";
-import Seo from "../components/Other/Seo";
 import get from "lodash/get";
 
 const wrapperShowUp = keyframes`
@@ -43,16 +42,15 @@ const Wrapper = styled.main`
 
 class BlogPostTemplate extends React.Component {
   componentWillMount() {
-    const posts = get(this, "props.data.allMarkdownRemark.edges");
+    const posts = get(this, "props.data.allContentfulPost");
   }
 
   render() {
-    const post = this.props.data.markdownRemark;
+    const post = this.props.data.allContentfulPost;
 
     return (
       <Wrapper navigatorIsActive={this.props.navigatorIsActive}>
-        <Helmet title={`${post.frontmatter.title} | ${config.siteTitle}`} />
-        <Seo postPath={post.frontmatter.path} postNode={post} postSEO />
+        <Helmet title={`${post.title} | ${config.siteTitle}`} />
         <Article post={post} />
       </Wrapper>
     );
@@ -62,18 +60,24 @@ class BlogPostTemplate extends React.Component {
 export default BlogPostTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostByPath($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
-      id
-      html
-      frontmatter {
-        title
-        subTitle
-        date(formatString: "MMMM DD, YYYY")
-        cover {
-          childImageSharp {
-            resize(width: 300) {
+  query BlogPostByPath {
+    allContentfulPost {
+      edges {
+        node {
+          title {
+            title
+          }
+          date
+          slug
+          body {
+            body
+          }
+          featuredImage {
+            resolutions(width: 175, height: 175) {
+              width
+              height
               src
+              ...GatsbyContentfulResolutions
             }
           }
         }

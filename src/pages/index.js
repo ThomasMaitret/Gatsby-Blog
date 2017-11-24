@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 class BlogIndex extends React.Component {
   componentWillMount() {
-    const posts = get(this, "props.data.allMarkdownRemark.edges");
+    const posts = get(this, "props.data.allContentfulPost.edges");
     this.props.updatePostsData(posts);
     this.props.updateNavigatorIsAside(false);
   }
@@ -22,23 +22,23 @@ export default BlogIndex;
 
 export const pageQuery = graphql`
   query IndexQuery {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allContentfulPost {
       edges {
         node {
-          excerpt
-          frontmatter {
-            path
-            date(formatString: "MMMM DD, YYYY")
+          title {
             title
-            subTitle
-            cover {
-              children {
-                ... on ImageSharp {
-                  sizes(maxWidth: 240) {
-                    ...GatsbyImageSharpSizes_withWebp_tracedSVG
-                  }
-                }
-              }
+          }
+          date
+          slug
+          body {
+            body
+          }
+          featuredImage {
+            resolutions(width: 175, height: 175) {
+              width
+              height
+              src
+              ...GatsbyContentfulResolutions
             }
           }
         }

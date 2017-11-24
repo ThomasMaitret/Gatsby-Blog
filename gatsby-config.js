@@ -63,6 +63,13 @@ module.exports = {
         ]
       }
     },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `oib51hl6nk0f`,
+        accessToken: `6303007156e0a7b8e2016dffcc0da1246b001b5d611c0b8b150efe1bbede1cb6`
+      }
+    },
     `gatsby-plugin-netlify`,
     `gatsby-plugin-offline`
   ]

@@ -50,23 +50,6 @@ const Title = styled.h1`
   }
 `;
 
-const SubTitle = styled.h2`
-  color: ${props => props.theme.post.colors.subTitle};
-  font-size: 1.5em;
-  font-weight: 300;
-  line-height: 1.15;
-  letter-spacing: 0em;
-  margin: 0 0 0.4em;
-
-  @media screen and (min-width: ${props => props.theme.mediaQueryTresholds.M}) {
-    font-size: 1.7em;
-  }
-  @media screen and (min-width: ${props =>
-      props.theme.mediaQueryTresholds.XL}) {
-    font-size: 2em;
-  }
-`;
-
 const Meta = styled.div`
   font-size: 0.9em;
   margin: 2rem 0 3rem;
@@ -182,10 +165,9 @@ const Article = ({ post }) => {
   return (
     <Wrapper>
       <Header>
-        <Title>{post.frontmatter.title}</Title>
-        <SubTitle>{post.frontmatter.subTitle}</SubTitle>
+        <Title>{post.title}</Title>
         <Meta>
-          <PostDate>{post.frontmatter.date}</PostDate>
+          <PostDate>{post.date}</PostDate>
         </Meta>
       </Header>
       <Content dangerouslySetInnerHTML={{ __html: post.html }} />
