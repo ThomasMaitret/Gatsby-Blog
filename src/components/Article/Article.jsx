@@ -165,12 +165,14 @@ const Article = ({ post }) => {
   return (
     <Wrapper>
       <Header>
-        <Title>{post.title}</Title>
+        <Title>{post.title.title}</Title>
         <Meta>
           <PostDate>{post.date}</PostDate>
         </Meta>
       </Header>
-      <Content dangerouslySetInnerHTML={{ __html: post.html }} />
+      <Content
+        dangerouslySetInnerHTML={{ __html: post.body.childMarkdownRemark.html }}
+      />
     </Wrapper>
   );
 };

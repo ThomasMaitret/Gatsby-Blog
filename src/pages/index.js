@@ -28,17 +28,11 @@ export const pageQuery = graphql`
           title {
             title
           }
-          date
           slug
-          body {
-            body
-          }
           featuredImage {
-            resolutions(width: 175, height: 175) {
-              width
-              height
+            sizes(width: 400) {
               src
-              ...GatsbyContentfulResolutions
+              width
             }
           }
         }

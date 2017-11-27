@@ -46,11 +46,11 @@ class BlogPostTemplate extends React.Component {
   }
 
   render() {
-    const post = this.props.data.allContentfulPost;
+    const post = this.props.data.contentfulPost;
 
     return (
       <Wrapper navigatorIsActive={this.props.navigatorIsActive}>
-        <Helmet title={`${post.title} | ${config.siteTitle}`} />
+        <Helmet title={`${post.title.title} | ${config.siteTitle}`} />
         <Article post={post} />
       </Wrapper>
     );
@@ -61,25 +61,21 @@ export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostByPath {
-    allContentfulPost {
-      edges {
-        node {
-          title {
-            title
-          }
-          date
-          slug
-          body {
-            body
-          }
-          featuredImage {
-            resolutions(width: 175, height: 175) {
-              width
-              height
-              src
-              ...GatsbyContentfulResolutions
-            }
-          }
+    contentfulPost {
+      slug
+      title {
+        title
+      }
+      date
+      body {
+        childMarkdownRemark {
+          html
+        }
+      }
+      featuredImage {
+        sizes(width: 200) {
+          src
+          width
         }
       }
     }
