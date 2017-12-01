@@ -76,7 +76,7 @@ export const pageQuery = graphql`
       }
       date
       featuredImage {
-        sizes {
+        sizes(maxWidth: 400) {
           src
           ...GatsbyContentfulSizes
         }
