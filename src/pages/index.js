@@ -1,14 +1,14 @@
-const config = require("../utils/siteConfig");
+const config = require('../utils/siteConfig');
 
-import Helmet from "react-helmet";
-import Link from "gatsby-link";
-import React from "react";
-import get from "lodash/get";
-import styled from "styled-components";
+import Helmet from 'react-helmet';
+import Link from 'gatsby-link';
+import React from 'react';
+import get from 'lodash/get';
+import styled from 'styled-components';
 
 class BlogIndex extends React.Component {
   componentWillMount() {
-    const posts = get(this, "props.data.allContentfulPost.edges");
+    const posts = get(this, 'props.data.allContentfulPost.edges');
     this.props.updatePostsData(posts);
     this.props.updateNavigatorIsAside(false);
   }
@@ -25,14 +25,23 @@ export const pageQuery = graphql`
     allContentfulPost {
       edges {
         node {
+          id
+          slug
+          date
           title {
             title
           }
-          slug
+          subtitle
+          body {
+            childMarkdownRemark {
+              html
+            }
+          }
+          date
           featuredImage {
-            sizes(width: 400) {
+            sizes {
               src
-              width
+              ...GatsbyContentfulSizes
             }
           }
         }

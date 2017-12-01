@@ -1,11 +1,11 @@
-const config = require("../utils/siteConfig");
+const config = require('../utils/siteConfig');
 
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components';
 
-import Article from "../components/Article/Article";
-import Helmet from "react-helmet";
-import React from "react";
-import get from "lodash/get";
+import Article from '../components/Article/Article';
+import Helmet from 'react-helmet';
+import React from 'react';
+import get from 'lodash/get';
 
 const wrapperShowUp = keyframes`
   0% {
@@ -42,7 +42,7 @@ const Wrapper = styled.main`
 
 class BlogPostTemplate extends React.Component {
   componentWillMount() {
-    const posts = get(this, "props.data.allContentfulPost");
+    const posts = get(this, 'props.data.allContentfulPost.edges');
   }
 
   render() {
@@ -60,22 +60,25 @@ class BlogPostTemplate extends React.Component {
 export default BlogPostTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostByPath {
-    contentfulPost {
+  query BlogPostByPath($path: String!) {
+    contentfulPost(slug: { eq: $path }) {
+      id
       slug
+      date
       title {
         title
       }
-      date
+      subtitle
       body {
         childMarkdownRemark {
           html
         }
       }
+      date
       featuredImage {
-        sizes(width: 200) {
+        sizes {
           src
-          width
+          ...GatsbyContentfulSizes
         }
       }
     }

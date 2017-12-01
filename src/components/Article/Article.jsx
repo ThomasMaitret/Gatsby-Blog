@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-const config = require("../../utils/siteConfig");
+const config = require('../../utils/siteConfig');
 
 const Wrapper = styled.article`
   max-width: ${props => props.theme.post.sizes.maxWidth};
@@ -36,7 +36,7 @@ const Title = styled.h1`
   font-size: 1.9em;
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1;
+  line-height: 1.1;
   margin: 0 0 0.4em;
 
   @media screen and (min-width: ${props => props.theme.mediaQueryTresholds.M}) {
@@ -47,6 +47,22 @@ const Title = styled.h1`
       props.theme.mediaQueryTresholds.XL}) {
     font-size: 3.2em;
     letter-spacing: -0.04em;
+  }
+`;
+
+const SubTitle = styled.h2`
+  color: ${props => props.theme.post.colors.subTitle};
+  font-size: 1.5em;
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: 0em;
+  margin: 0 0 0.4em;
+  @media screen and (min-width: ${props => props.theme.mediaQueryTresholds.M}) {
+    font-size: 1.7em;
+  }
+  @media screen and (min-width: ${props =>
+      props.theme.mediaQueryTresholds.XL}) {
+    font-size: 2em;
   }
 `;
 
@@ -124,7 +140,7 @@ const Content = styled.div`
     &::after,
     &::before {
       background: ${props => props.theme.post.backgrounds.wrapper};
-      content: "";
+      content: '';
       height: 5px;
       left: 50%;
       margin-left: -47%;
@@ -166,6 +182,7 @@ const Article = ({ post }) => {
     <Wrapper>
       <Header>
         <Title>{post.title.title}</Title>
+        <SubTitle>{post.subtitle}</SubTitle>
         <Meta>
           <PostDate>{post.date}</PostDate>
         </Meta>

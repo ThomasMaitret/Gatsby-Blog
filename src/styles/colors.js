@@ -5,6 +5,7 @@ module.exports = {
   firstDark: "#e74c3c",
   accent: "#FF6633",
   bright: "#ffffff",
+  superLight: "#fbfbfb",
   light: "#f3f3f3",
   middle: "#555",
   lightDark: "444444",

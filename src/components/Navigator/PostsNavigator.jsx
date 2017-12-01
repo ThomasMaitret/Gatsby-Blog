@@ -227,7 +227,9 @@ class PostsNavigator extends React.Component {
                 >
                   <Link to={post.node.slug} onClick={this.props.linkOnClick}>
                     <Post>
-                      <Picture isAside={this.props.isAside} />
+                      <Picture isAside={this.props.isAside}>
+                        <Img sizes={post.node.featuredImage.sizes} />
+                      </Picture>
                       <Title isAside={this.props.isAside}>
                         {post.node.title.title}
                       </Title>

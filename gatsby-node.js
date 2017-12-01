@@ -11,7 +11,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       graphql(
         `
           {
-            allContentfulPost(limit: 1000) {
+            allContentfulPost {
               edges {
                 node {
                   slug
@@ -27,6 +27,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         }
 
         // Create blog posts pages.
+        // We define a variable "path" that is equal to our blogpost slug.
         _.each(result.data.allContentfulPost.edges, edge => {
           createPage({
             path: edge.node.slug,
