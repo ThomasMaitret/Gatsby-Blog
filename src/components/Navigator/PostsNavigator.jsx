@@ -175,33 +175,6 @@ const Title = styled.h2`
   }
 `;
 
-const SubTitle = styled.h3`
-  color: ${props => props.theme.navigator.colors.subTitle};
-  font-size: 1.1em;
-  font-weight: 300;
-  line-height: 1.2;
-  letter-spacing: "-.02em";
-  margin: 0.5rem 0 0 0;
-  padding-left: 35%;
-
-  @media screen and (min-width: ${props => props.theme.mediaQueryTresholds.S}) {
-    padding-left: 33%;
-    font-size: 1.2em;
-  }
-  @media screen and (min-width: ${props => props.theme.mediaQueryTresholds.M}) {
-    padding-left: 31%;
-    font-size: 1.3em;
-  }
-  @media screen and (min-width: ${props => props.theme.mediaQueryTresholds.L}) {
-    padding-left: 29%;
-    font-size: 1.4em;
-  }
-  @media screen and (min-width: ${props =>
-      props.theme.mediaQueryTresholds.XL}) {
-    font-size: 1.5em;
-  }
-`;
-
 const Picture = styled.div`
   bottom: 0;
   width: 25%;
@@ -244,35 +217,22 @@ class PostsNavigator extends React.Component {
         >
           {this.props.posts &&
             this.props.posts.map(post => {
-              const title =
-                get(post, "node.frontmatter.title") || post.node.path;
+              const title = get(post, "node.title.title") || post.node.slug;
               return (
                 <ListItem
-                  isActive={post.node.frontmatter.path === this.props.location}
+                  isActive={post.node.slug === this.props.location}
                   isAside={this.props.isAside}
                   inTransition={this.props.inTransition}
-                  key={post.node.frontmatter.path}
+                  key={post.node.slug}
                 >
-                  <Link
-                    to={post.node.frontmatter.path}
-                    onClick={this.props.linkOnClick}
-                  >
+                  <Link to={post.node.slug} onClick={this.props.linkOnClick}>
                     <Post>
                       <Picture isAside={this.props.isAside}>
-                        <Img
-                          sizes={post.node.frontmatter.cover.children[0].sizes}
-                        />
+                        <Img sizes={post.node.featuredImage.sizes} />
                       </Picture>
-
                       <Title isAside={this.props.isAside}>
-                        {post.node.frontmatter.title}
+                        {post.node.title.title}
                       </Title>
-
-                      {!this.props.isAside && (
-                        <SubTitle isAside={this.props.isAside}>
-                          {post.node.frontmatter.subTitle}
-                        </SubTitle>
-                      )}
                     </Post>
                   </Link>
                 </ListItem>

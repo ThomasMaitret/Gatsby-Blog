@@ -14,7 +14,7 @@ const theme = {
       maxWidth: "56em"
     },
     backgrounds: {
-      wrapper: colors.bright,
+      wrapper: colors.superLight,
       asideItemActive: colors.firstLight
     }
   },

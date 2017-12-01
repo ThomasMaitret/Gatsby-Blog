@@ -20,7 +20,7 @@ injectGlobal`
   }
 
   *::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
   *::-webkit-scrollbar-track {
     background: #eee;

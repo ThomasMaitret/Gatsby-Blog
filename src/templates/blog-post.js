@@ -1,12 +1,11 @@
-const config = require("../utils/siteConfig");
+const config = require('../utils/siteConfig');
 
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components';
 
-import Article from "../components/Article/Article";
-import Helmet from "react-helmet";
-import React from "react";
-import Seo from "../components/Other/Seo";
-import get from "lodash/get";
+import Article from '../components/Article/Article';
+import Helmet from 'react-helmet';
+import React from 'react';
+import get from 'lodash/get';
 
 const wrapperShowUp = keyframes`
   0% {
@@ -43,16 +42,15 @@ const Wrapper = styled.main`
 
 class BlogPostTemplate extends React.Component {
   componentWillMount() {
-    const posts = get(this, "props.data.allMarkdownRemark.edges");
+    const posts = get(this, 'props.data.allContentfulPost.edges');
   }
 
   render() {
-    const post = this.props.data.markdownRemark;
+    const post = this.props.data.contentfulPost;
 
     return (
       <Wrapper navigatorIsActive={this.props.navigatorIsActive}>
-        <Helmet title={`${post.frontmatter.title} | ${config.siteTitle}`} />
-        <Seo postPath={post.frontmatter.path} postNode={post} postSEO />
+        <Helmet title={`${post.title.title} | ${config.siteTitle}`} />
         <Article post={post} />
       </Wrapper>
     );
@@ -63,19 +61,24 @@ export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostByPath($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+    contentfulPost(slug: { eq: $path }) {
       id
-      html
-      frontmatter {
+      slug
+      date
+      title {
         title
-        subTitle
-        date(formatString: "MMMM DD, YYYY")
-        cover {
-          childImageSharp {
-            resize(width: 300) {
-              src
-            }
-          }
+      }
+      subtitle
+      body {
+        childMarkdownRemark {
+          html
+        }
+      }
+      date
+      featuredImage {
+        sizes {
+          src
+          ...GatsbyContentfulSizes
         }
       }
     }

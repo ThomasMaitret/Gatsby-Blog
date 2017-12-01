@@ -7,7 +7,6 @@ import Helmet from "react-helmet";
 import Link from "gatsby-link";
 import PostsNavigatorContainer from "../components/Navigator/PostsNavigatorContainer";
 import React from "react";
-import Seo from "../components/Other/Seo";
 import TopBarContainer from "../components/TopBar/TopBarContainer";
 import globals from "../styles/global";
 import styles from "../styles/base";
@@ -87,7 +86,6 @@ class Template extends React.Component {
           <Helmet>
             <html lang="en" />
           </Helmet>
-          <Seo />
           <TopBarContainer
             navigatorIsAside={this.state.navigatorIsAside}
             navigatorIsActive={this.state.posts.length}

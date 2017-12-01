@@ -1,40 +1,12 @@
-const config = require("./src/utils/siteConfig");
+const config = require('./src/utils/siteConfig');
 
 module.exports = {
   siteMetadata: {
-    title: "User Experience Notes 2",
-    author: "Greg Lobinski"
+    title: 'Personal Blog',
+    author: 'Thomas Maitret'
   },
   plugins: [
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/posts`,
-        name: "posts"
-      }
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 800
-            }
-          },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`
-            }
-          },
-          "gatsby-remark-prismjs",
-          "gatsby-remark-copy-linked-files",
-          "gatsby-remark-smartypants"
-        ]
-      }
-    },
+    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-react-helmet`,
@@ -48,19 +20,14 @@ module.exports = {
         start_url: config.manifestStartUrl,
         background_color: config.manifestBackgroundColor,
         theme_color: config.manifestThemeColor,
-        display: config.manifestDisplay,
-        icons: [
-          {
-            src: "/icons/icon-192x192.png",
-            sizes: "192x192",
-            type: "image/png"
-          },
-          {
-            src: "/icons/icon-512x512.png",
-            sizes: "512x512",
-            type: "image/png"
-          }
-        ]
+        display: config.manifestDisplay
+      }
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `oib51hl6nk0f`,
+        accessToken: `6303007156e0a7b8e2016dffcc0da1246b001b5d611c0b8b150efe1bbede1cb6`
       }
     },
     `gatsby-plugin-netlify`,
