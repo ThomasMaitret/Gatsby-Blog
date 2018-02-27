@@ -1,16 +1,16 @@
-import "normalize.css";
+import 'normalize.css';
 
-import styled, { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from 'styled-components';
 
-import BottomBarContainer from "../components/BottomBar/BottomBarContainer";
-import Helmet from "react-helmet";
-import Link from "gatsby-link";
-import PostsNavigatorContainer from "../components/Navigator/PostsNavigatorContainer";
-import React from "react";
-import TopBarContainer from "../components/TopBar/TopBarContainer";
-import globals from "../styles/global";
-import styles from "../styles/base";
-import theme from "../styles/theme";
+import BottomBarContainer from '../components/BottomBar/BottomBarContainer';
+import Helmet from 'react-helmet';
+import Link from 'gatsby-link';
+import PostsNavigatorContainer from '../components/Navigator/PostsNavigatorContainer';
+import React from 'react';
+import TopBarContainer from '../components/TopBar/TopBarContainer';
+import globals from '../styles/global';
+import styles from '../styles/base';
+import theme from '../styles/theme';
 
 //import whatInput from "what-input";
 
@@ -64,7 +64,7 @@ class Template extends React.Component {
 
   endNavigatorTransition(hidden) {
     let isWideScreen =
-      typeof window !== "undefined"
+      typeof window !== 'undefined'
         ? document.documentElement.clientWidth > 776
         : false;
     setTimeout(() => {

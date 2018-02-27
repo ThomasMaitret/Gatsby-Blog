@@ -1,4 +1,4 @@
-const colors = require("./colors");
+const colors = require('./colors');
 
 const theme = {
   navigator: {
@@ -10,8 +10,8 @@ const theme = {
       asideItemActiveBorder: colors.first
     },
     sizes: {
-      asideWidth: "20em",
-      maxWidth: "56em"
+      asideWidth: '20em',
+      maxWidth: '56em'
     },
     backgrounds: {
       wrapper: colors.superLight,
@@ -35,7 +35,7 @@ const theme = {
       meta: colors.light
     },
     sizes: {
-      maxWidth: "50em"
+      maxWidth: '50em'
     }
   },
   bottomBar: {
@@ -65,11 +65,11 @@ const theme = {
     }
   },
   mediaQueryTresholds: {
-    XL: "65em",
-    L: "49em",
-    M: "37em",
-    S: "28em",
-    XS: "21em"
+    XL: '65em',
+    L: '49em',
+    M: '37em',
+    S: '28em',
+    XS: '21em'
   }
 };
 

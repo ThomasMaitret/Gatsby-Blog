@@ -1,9 +1,9 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components';
 
-import Img from "gatsby-image";
-import Link from "gatsby-link";
-import React from "react";
-import get from "lodash/get";
+import Img from 'gatsby-image';
+import Link from 'gatsby-link';
+import React from 'react';
+import get from 'lodash/get';
 
 const wrapperShowUp = keyframes`
   from {
@@ -16,19 +16,19 @@ const wrapperShowUp = keyframes`
 
 const Wrapper = styled.nav`
   display: ${props =>
-    props.isAside ? (props.inTransition ? "block" : "none") : "block"};
+    props.isAside ? (props.inTransition ? 'block' : 'none') : 'block'};
   bottom: 0;
   background: ${props => props.theme.navigator.backgrounds.wrapper};
   left: ${props =>
     props.isAside
       ? props => `-${props.theme.navigator.sizes.asideWidth}`
-      : "0"};
+      : '0'};
   padding-top: ${props => props.theme.topBar.sizes.height}px;
   overflow: auto;
   position: absolute;
   top: 0;
   width: ${props =>
-    props.isAside ? props.theme.navigator.sizes.asideWidth : "100%"};
+    props.isAside ? props.theme.navigator.sizes.asideWidth : '100%'};
 
   @media screen and (min-width: ${props => props.theme.mediaQueryTresholds.M}) {
     padding-top: ${props =>
@@ -39,7 +39,7 @@ const Wrapper = styled.nav`
   @media screen and (min-width: ${props => props.theme.mediaQueryTresholds.L}) {
     display: block;
     left: 0;
-    transition: all 0.3s ease;
+    transition: all 0.1s ease;
   }
 
   &::-webkit-scrollbar-track {
@@ -51,7 +51,7 @@ const Wrapper = styled.nav`
 
   a {
     display: block;
-    padding: ${props => (props.isAside ? "1em 1em 1em .8em" : "2em 1.5em")};
+    padding: ${props => (props.isAside ? '1em 1em 1em .8em' : '3em 1.5em')};
     color: inherit;
     text-decoration: none;
     &:hover {
@@ -73,7 +73,7 @@ const headerShowUp = keyframes`
 `;
 
 const Header = styled.header`
-  display: ${props => (props.isAside ? "block" : "none")};
+  display: ${props => (props.isAside ? 'block' : 'none')};
   position: absolute;
   top: 0;
   left: 0;
@@ -86,7 +86,7 @@ const Header = styled.header`
 `;
 
 const List = styled.ul`
-  display: ${props => (props.inTransition ? "none" : "block")};
+  display: ${props => (props.inTransition ? 'none' : 'block')};
   list-style: none;
   max-width: ${props => props.theme.navigator.sizes.maxWidth};
   margin: 0;
@@ -95,17 +95,17 @@ const List = styled.ul`
   padding: 0;
 
   @media screen and (min-width: ${props => props.theme.mediaQueryTresholds.S}) {
-    padding: ${props => (!props.isAside ? "0 1.5em" : "")};
+    padding: ${props => (!props.isAside ? '0 1.5em' : '')};
   }
   @media screen and (min-width: ${props => props.theme.mediaQueryTresholds.M}) {
-    padding: ${props => (!props.isAside ? "0 2em" : "")};
+    padding: ${props => (!props.isAside ? '0 2em' : '')};
   }
   @media screen and (min-width: ${props => props.theme.mediaQueryTresholds.L}) {
-    padding: ${props => (!props.isAside ? "0 3em" : "")};
+    padding: ${props => (!props.isAside ? '0 3em' : '')};
   }
   @media screen and (min-width: ${props =>
       props.theme.mediaQueryTresholds.XL}) {
-    padding: ${props => (!props.isAside ? "0" : "")};
+    padding: ${props => (!props.isAside ? '0' : '')};
   }
 `;
 
@@ -120,18 +120,18 @@ to {
 
 const ListItem = styled.li`
   animation-name: ${itemShowUp};
-  animation-duration: 0.3s;
+  animation-duration: 0.1s;
   background: ${props =>
     props.isActive
       ? props => props.theme.navigator.backgrounds.asideItemActive
-      : "none"};
+      : 'none'};
   border-left: 0.4em solid
     ${props =>
       props.isActive
         ? props => props.theme.navigator.colors.asideItemActiveBorder
         : props.theme.navigator.backgrounds.wrapper};
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  transition: background 0.3s;
+  transition: background 0.1s;
   &:first-child {
     border-top: ${props =>
       props.isAside ? `1px solid rgba(255, 255, 255, 0.1)` : ``};
@@ -145,29 +145,29 @@ const Post = styled.div`
 
 const Title = styled.h2`
   color: ${props => props.theme.navigator.colors.title};
-  font-weight: ${props => (props.isAside ? "400" : "700")};
-  font-size: ${props => (props.isAside ? ".95em" : "1.3em")};
-  letter-spacing: ${props => (props.isAside ? "0" : "-.04em")};
-  line-height: ${props => (props.isAside ? "1.15" : "1.1")};
+  font-weight: ${props => (props.isAside ? '400' : '700')};
+  font-size: ${props => (props.isAside ? '.95em' : '1.3em')};
+  letter-spacing: ${props => (props.isAside ? '0' : '-.04em')};
+  line-height: ${props => (props.isAside ? '1.15' : '1.1')};
   margin: 0;
-  opacity: ${props => (props.inTransition ? "0" : "1")};
+  opacity: ${props => (props.inTransition ? '0' : '1')};
   padding-left: 35%;
-  transition: all 0.3s;
+  transition: all 0.1s;
 
   @media screen and (min-width: ${props => props.theme.mediaQueryTresholds.S}) {
-    padding-left: ${props => (!props.isAside ? "33%" : "")};
+    padding-left: ${props => (!props.isAside ? '33%' : '')};
   }
   @media screen and (min-width: ${props => props.theme.mediaQueryTresholds.M}) {
-    padding-left: ${props => (!props.isAside ? "31%" : "")};
-    font-size: ${props => (!props.isAside ? "1.7em" : "")};
+    padding-left: ${props => (!props.isAside ? '31%' : '')};
+    font-size: ${props => (!props.isAside ? '1.7em' : '')};
   }
   @media screen and (min-width: ${props => props.theme.mediaQueryTresholds.L}) {
-    padding-left: ${props => (!props.isAside ? "29%" : "")};
-    font-size: ${props => (!props.isAside ? "2em" : "")};
+    padding-left: ${props => (!props.isAside ? '29%' : '')};
+    font-size: ${props => (!props.isAside ? '2em' : '')};
   }
   @media screen and (min-width: ${props =>
       props.theme.mediaQueryTresholds.XL}) {
-    font-size: ${props => (!props.isAside ? "2.2em" : "")};
+    font-size: ${props => (!props.isAside ? '2.2em' : '')};
   }
 
   a:hover & {
@@ -178,12 +178,11 @@ const Title = styled.h2`
 const Picture = styled.div`
   bottom: 0;
   width: 25%;
-  left: 3px;
+  height: ${props => (props.isAside ? 'auto' : '10vh')};
   position: absolute;
-  box-shadow: ${props => (!props.isAside ? "0 2px 1px rgba(0,0,0,.2)" : "")};
   overflow: hidden;
-  top: ${props => (props.isAside ? "0" : "5px")};
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  top: ${props => (props.isAside ? '0' : '-20px')};
+  transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   .gatsby-image-outer-wrapper {
     height: 100%;
@@ -217,7 +216,7 @@ class PostsNavigator extends React.Component {
         >
           {this.props.posts &&
             this.props.posts.map(post => {
-              const title = get(post, "node.title.title") || post.node.slug;
+              const title = get(post, 'node.title.title') || post.node.slug;
               return (
                 <ListItem
                   isActive={post.node.slug === this.props.location}

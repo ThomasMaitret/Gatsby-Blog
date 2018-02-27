@@ -20,7 +20,7 @@ const Wrapper = styled.article`
     display: inline-block;
     line-height: 1.1;
     text-decoration: none;
-    transition: 0.3s;
+    transition: 0.1s;
 
     &:hover {
       color: ${props => props.theme.post.colors.linkHover};
